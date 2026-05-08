@@ -1,0 +1,85 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup visible="{{showLoginTip}}" title="登录提示" desc="登录后即可享用全部内容" cancelText="暂不登录" confirmText="立即登录" bind:close="onTipClose" bind:confirm="onGoLogin" bind:cancel="onTipCancel" />
+
+<!-- 整体容器：flex 垂直布局 -->
+<view class="page-container">
+
+  <!-- 固定导航栏 -->
+  <view class="custom-nav" style="padding-top: {{20}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="nav-title-wrapper">
+      <view class="nav-title">{{one_consumer.nickname}}</view>
+    </view>
+  </view>
+
+  <!-- 自定义长按菜单 - 横向并排 -->
+  <view class="message-menu {{menuVisible ? 'menu-show' : ''}} {{menuPosition === 'bottom' ? 'menu-bottom' : 'menu-top'}}" style="top: {{menuTop}}px; left: {{menuLeft}}px;" bindtap="hideMenu">
+    <view class="menu-content">
+      <view class="menu-item menu-copy" bindtap="onMenuCopy">
+        <text>复制</text>
+      </view>
+      <view class="menu-item menu-recall" bindtap="onMenuRecall" wx:if="{{showRecall}}">
+        <text>撤回</text>
+      </view>
+      <view class="menu-item menu-delete" bindtap="onMenuDelete">
+        <text>删除</text>
+      </view>
+    </view>
+    <!-- 小三角箭头，支持动态位置 -->
+    <view class="menu-arrow" style="left: {{menuArrowLeft}}px;"></view>
+  </view>
+
+<!-- 聊天滚动区域：自动填充剩余空间 -->
+<scroll-view class="chat-scroll-view" scroll-y="true" scroll-into-view="{{scrollToView}}" scroll-with-animation="{{messageList.length >= 5}}" enhanced="{{true}}" show-scrollbar="{{false}}" adjust-position="{{false}}" bindtap="onTapBlank">
+  <view class="chat-content">
+    <block wx:for="{{messageList}}" wx:key="id">
+      <!-- 时间标签 -->
+      <view class="message-time-tip" wx:if="{{item.showTimeTip}}">
+        <view class="time-tip-text">{{item.timeTipText}}</view>
+      </view>
+
+      <!-- 系统消息（撤回提示等）居中显示 -->
+      <view class="message-system" wx:if="{{item.isSystem}}">
+        <view class="system-tip">{{item.content}}</view>
+      </view>
+
+      <!-- 普通消息左右排列 -->
+      <view class="message-item {{item.isSelf ? 'message-right' : 'message-left'}}" wx:else>
+        <!-- 左侧头像（对方） -->
+        <image class="avatar avatar-left" wx:if="{{!item.isSelf}}" src="{{one_consumer.avatarUrl}}" mode="aspectFill"></image>
+        
+        <view class="bubble {{item.isSelf ? 'bubble-right' : 'bubble-left'}}" id="bubble-{{item.id}}" bindlongpress="onLongPressMessage" data-message="{{item}}">
+          <text>{{item.content}}</text>
+        </view>
+        
+        <!-- 右侧头像（自己） -->
+        <image class="avatar avatar-right" wx:if="{{item.isSelf}}" src="{{self_url}}" mode="aspectFill"></image>
+      </view>
+    </block>
+    <view id="bottom-anchor"></view>
+  </view>
+</scroll-view>
+  <!-- 底部输入框：固定在底部 -->
+  <view class="input-bar-wrapper">
+    <view class="input-bar">
+      <view class="input-left-btn" bindtap="onEmojiClick">
+        <image class="left-icon" src="/resources/icon/add.png" mode="aspectFit"></image>
+      </view>
+      <view class="input-middle">
+        <input class="chat-input" focus="{{inputFocus}}" type="text" placeholder="说点什么吧..." placeholder-class="input-placeholder" value="{{inputValue}}" bindinput="onInputChange" bindfocus="onInputFocus" bindblur="onInputBlur" confirm-type="send" hold-keyboard="{{true}}" adjust-position="{{false}}" cursor-spacing="10" />
+      </view>
+      <view class="input-right-btn {{inputValue ? 'send-active' : 'send-disabled'}}" bindtap="onSendMessage">
+        <text>发送</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 键盘占位区（解决键盘遮挡问题，微信做法） -->
+  <view class="keyboard-placeholder" style="height: {{keyboardHeight}}px;"></view>
+
+</view>

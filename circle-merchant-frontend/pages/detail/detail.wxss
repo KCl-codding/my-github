@@ -1,0 +1,498 @@
+/* pages/yard/yard.wxss */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #e9f6fc;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 改为左对齐 */
+  padding-left: 32rpx; /* 左边距，可根据需要调整 */
+}
+
+.nav-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  cursor: pointer;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.page-content {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+
+/* index.wxss */
+/* 页面包裹容器 */
+.page-wrapper {
+  padding: 30rpx 24rpx 60rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* 卡片通用样式 */
+.card {
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  margin-bottom: 24rpx;
+  padding: 28rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.count-badge {
+  font-size: 24rpx;
+  color: #999;
+  background-color: #f5f5f5;
+  padding: 6rpx 16rpx;
+  border-radius: 32rpx;
+}
+
+/* 活动类型标签 */
+.type-badge {
+  background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
+  color: white;
+  font-size: 24rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 32rpx;
+  font-weight: 500;
+}
+
+.activity-label {
+  font-size: 26rpx;
+  color: #666;
+  background-color: #f8f8f8;
+  padding: 6rpx 16rpx;
+  border-radius: 32rpx;
+}
+
+/* 信息行 */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 400;
+}
+
+.value {
+  font-size: 28rpx;
+  color: #1a1a1a;
+  font-weight: 500;
+  word-break: break-all;
+  text-align: right;
+  max-width: 60%;
+}
+
+.openid, .uuid {
+  font-family: monospace;
+  font-size: 24rpx;
+  background-color: #f8f8f8;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.highlight {
+  color: #07c160;
+  font-weight: 700;
+  font-size: 32rpx;
+}
+
+/* 消费项目列表样式 */
+.pays-list {
+  margin-top: 8rpx;
+}
+
+.pay-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.pay-item:last-child {
+  border-bottom: none;
+}
+
+.pay-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  flex: 1;
+}
+
+.pay-project {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.pay-id {
+  font-size: 24rpx;
+  color: #999;
+  font-family: monospace;
+}
+
+.pay-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4rpx;
+  background-color: #fff5f0;
+  padding: 8rpx 16rpx;
+  border-radius: 32rpx;
+}
+
+.money-symbol {
+  font-size: 28rpx;
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+.money-number {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.money-unit {
+  font-size: 24rpx;
+  color: #ff6b35;
+  font-weight: 400;
+}
+
+/* 加载和空状态 */
+.loading-tip, .empty-tip {
+  text-align: center;
+  padding: 100rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 弹窗遮罩样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 48rpx;
+  color: #999;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.input-group {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.input-field {
+  width: 100%;
+  padding: 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid #eee;
+}
+
+.modal-btn {
+  flex: 1;
+  text-align: center;
+  padding: 30rpx;
+  font-size: 28rpx;
+  background: none;
+  border: none;
+}
+
+.modal-btn.cancel-btn {
+  color: #999;
+}
+
+.modal-btn.confirm-btn {
+  color: #07c160;
+  border-left: 1rpx solid #eee;
+}
+
+/* 弹窗遮罩样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  width: 85%;
+  background-color: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 40rpx 30rpx 40rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 52rpx;
+  color: #999;
+  line-height: 1;
+  padding: 0 10rpx;
+}
+
+.modal-body {
+  padding: 40rpx;
+}
+
+.input-group {
+  margin-bottom: 40rpx;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-label {
+  display: block;
+  font-size: 30rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.input-field {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid #e5e5e5;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  color: #333;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  line-height: 88rpx;
+}
+
+.input-field:focus {
+  border-color: #07c160;
+  background-color: #fff;
+}
+
+/* 针对 input 输入框的 placeholder 样式 */
+.input-field::placeholder {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.modal-btn {
+  flex: 1;
+  text-align: center;
+  padding: 32rpx;
+  font-size: 32rpx;
+  background: none;
+  border: none;
+  line-height: 1;
+  border-radius: 0;
+}
+
+.modal-btn.cancel-btn {
+  color: #999;
+}
+
+.modal-btn.confirm-btn {
+  color: #07c160;
+  border-left: 1rpx solid #f0f0f0;
+  font-weight: 500;
+}
+
+.modal-btn::after {
+  border: none;
+}
+
+.modal-btn:active {
+  background-color: #f5f5f5;
+}
+
+/* 添加按钮样式 */
+.add-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28rpx;
+  margin-top: 24rpx;
+  background-color: #f8f8f8;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+  border: 1rpx dashed #ddd;
+}
+
+.add-pay-btn:active {
+  background-color: #f0f0f0;
+}
+
+.add-icon {
+  font-size: 36rpx;
+  color: #07c160;
+  margin-right: 12rpx;
+  font-weight: bold;
+}
+
+.add-text {
+  font-size: 30rpx;
+  color: #07c160;
+}
+
+/* 空消费项目提示 */
+.empty-pays-tip {
+  text-align: center;
+  padding: 80rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+/* 添加按钮样式 */
+.add-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+  margin-top: 20rpx;
+  background-color: #f8f8f8;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.add-pay-btn:active {
+  background-color: #e8e8e8;
+}
+
+.add-icon {
+  font-size: 32rpx;
+  color: #07c160;
+  margin-right: 12rpx;
+  font-weight: bold;
+}
+
+.add-text {
+  font-size: 28rpx;
+  color: #07c160;
+}
+
+/* 空消费项目提示 */
+.empty-pays-tip {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 长按时的反馈效果 */
+.pay-item-hover {
+  background-color: #f8f9fa;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+/* 确保 pay-item 有过渡效果 */
+.pay-item {
+  transition: background-color 0.2s ease;
+}

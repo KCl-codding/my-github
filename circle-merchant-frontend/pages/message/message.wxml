@@ -1,0 +1,52 @@
+<!--pages/message/message.wxml-->
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup 
+  visible="{{showLoginTip}}"
+  title="登录提示"
+  desc="登录后即可享用全部内容"
+  cancelText="暂不登录"
+  confirmText="立即登录"
+  bind:close="onTipClose"
+  bind:confirm="onGoLogin"
+  bind:cancel="onTipCancel"
+/>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-title">缘-圈 用户端</view>
+</view>
+
+<!-- 占位 view -->
+<view style="height: 80px;"></view>
+<!-- 聊天列表 -->
+<view class="chat-list" wx:if="{{chat_list && chat_list.length > 0}}">
+  <view class="chat-item" wx:for="{{chat_list}}" wx:key="id" bindtap="onChatTap" data-user="{{item}}">
+    <!-- 头像区域（包含角标） -->
+    <view class="avatar-wrapper">
+      <image class="avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+      <!-- 未读消息角标 - 简化条件 -->
+      <view class="badge" wx:if="{{item.message > 0}}">
+        <text class="badge-text">{{item.message > 99 ? '99+' : item.message}}</text>
+      </view>
+    </view>
+    
+    <!-- 聊天信息 -->
+    <view class="chat-info">
+      <view class="chat-header">
+        <text class="nickname">{{item.nickname || '微信用户'}}</text>
+        <text class="time">{{item.last_message.sendTimeFormat || ''}}</text>
+      </view>
+      <view class="chat-preview">
+        <text class="last-message">{{item.last_message.content || ' '}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 空状态 -->
+<view class="empty-chat" wx:else>
+  <text class="empty-text">暂无聊天记录</text>
+  <text class="empty-tip">去添加好友开始聊天吧</text>
+</view>

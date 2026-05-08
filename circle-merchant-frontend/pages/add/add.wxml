@@ -1,0 +1,105 @@
+<!--pages/uploadForm/uploadForm.wxml-->
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup visible="{{showLoginTip}}" title="登录提示" desc="登录后即可享用全部内容" cancelText="暂不登录" confirmText="立即登录" bind:close="onTipClose" bind:confirm="onGoLogin" bind:cancel="onTipCancel" />
+
+<!-- 页面容器 -->
+<view class="page-container">
+  <!-- 固定导航栏 -->
+  <view class="custom-nav" style="padding-top: {{20}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="nav-title-wrapper">
+      <view class="nav-title">{{type}}</view>
+    </view>
+  </view>
+
+  <!-- 上传表单主体 -->
+  <scroll-view class="upload-form-container" scroll-y enhanced show-scrollbar="{{false}}">
+    <form bindsubmit="formSubmit">
+
+      <!-- 活动类型 -->
+      <view class="form-item">
+        <text class="label">类型</text>
+        <picker mode="selector" range="{{typeOptions}}" bindchange="onTypeChange">
+          <view class="picker-value">{{typeIndex !== -1 ? typeOptions[typeIndex] : '请选择'}}</view>
+        </picker>
+      </view>
+
+      <!-- 活动名称 -->
+      <view class="form-item">
+        <text class="label">活动描述</text>
+        <input class="input-field" name="activity" placeholder="请输入活动描述" bindinput="onActivityInput" />
+      </view>
+
+      <!-- 位置坐标 -->
+      <view class="form-item">
+        <text class="label">位置</text>
+        <input class="input-field" name="position" placeholder="请输入详细位置" bindinput="onPositionInput" />
+      </view>
+
+      <!-- 数值 -->
+      <view class="form-item">
+        <text class="label">数值</text>
+        <input class="input-field" name="value" type="digit" placeholder="请输入数值" bindinput="onValueInput" />
+      </view>
+
+      <!-- 支付项目列表（动态添加/删除） -->
+      <view class="form-item">
+        <view class="section-header">
+          <text class="label">支付项目</text>
+        </view>
+
+        <!-- 支付项目列表 -->
+        <view wx:for="{{pays}}" wx:key="index" class="pay-item">
+          <view class="pay-input-group">
+            <input class="pay-input" placeholder="支付项目名称" value="{{item.payProject}}" data-index="{{index}}" data-field="payProject" bindinput="onPayInput" />
+            <input class="pay-input money-input" placeholder="金额" type="digit" value="{{item.money}}" data-index="{{index}}" data-field="money" bindinput="onPayInput" />
+            <button class="delete-btn" type="warn" size="mini" bindtap="removePay" data-index="{{index}}">删除</button>
+          </view>
+        </view>
+
+        <view wx:if="{{pays.length === 0}}" class="empty-tip">暂无支付项目，点击下方按钮添加</view>
+        
+        <!-- 添加支付项目按钮 -->
+        <view class="add-pay-item" bindtap="addPay">
+          <view class="add-pay-icon">+</view>
+          <text class="add-pay-text">添加支付项目</text>
+        </view>
+      </view>
+
+      <!-- 图片上传列表 -->
+      <view class="form-item">
+        <view class="image-list">
+          <view wx:for="{{imageList}}" wx:key="index" class="image-item">
+            <image class="uploaded-image" src="{{item.tempUrl}}" mode="aspectFill" data-index="{{index}}" bindtap="previewImage"></image>
+            <view class="image-actions">
+              <view class="upload-status" wx:if="{{item.uploading}}">上传中...</view>
+              <view class="upload-status success" wx:elif="{{item.uploaded}}">✓ 已上传</view>
+              <view class="upload-status error" wx:elif="{{item.error}}">✗ 上传失败</view>
+            </view>
+            <view class="image-remove" data-index="{{index}}" bindtap="removeImage">×</view>
+          </view>
+
+          <!-- 添加图片按钮 -->
+          <view wx:if="{{imageList.length < 9}}" class="add-image-btn" bindtap="chooseImage">
+            <view class="add-icon">+</view>
+            <view class="add-text">添加图片</view>
+          </view>
+        </view>
+
+        <view wx:if="{{imageList.length === 0}}" class="empty-tip">暂无图片，点击上方按钮添加图片</view>
+      </view>
+
+      <!-- 提交按钮 - 放在 form 内部 -->
+      <view class="submit-btn-wrapper">
+        <button class="submit-btn" formType="submit" disabled="{{hasUploading}}">提交表单</button>
+        <view wx:if="{{hasUploading}}" class="uploading-tip">图片上传中，请稍后...</view>
+      </view>
+      
+    </form>
+  </scroll-view>
+</view>

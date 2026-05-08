@@ -1,0 +1,114 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup visible="{{showLoginTip}}" title="登录提示" desc="登录后即可享用全部内容" cancelText="暂不登录" confirmText="立即登录" bind:close="onTipClose" bind:confirm="onGoLogin" bind:cancel="onTipCancel" />
+
+<!-- 添加消费项目弹窗 -->
+<view class="modal-mask" wx:if="{{showAddModal}}" bindtap="closeAddModal">
+  <view class="modal-container" catchtap="preventClose">
+    <view class="modal-header">
+      <text class="modal-title">添加消费项目</text>
+      <text class="modal-close" bindtap="closeAddModal">×</text>
+    </view>
+    <view class="modal-body">
+      <view class="input-group">
+        <text class="input-label">项目名称</text>
+        <input class="input-field" placeholder="请输入项目名称" value="{{newPayProject}}" bindinput="onProjectInput" />
+      </view>
+      <view class="input-group">
+        <text class="input-label">金额（元）</text>
+        <input class="input-field" type="digit" placeholder="请输入金额" value="{{newPayMoney}}" bindinput="onMoneyInput" />
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="closeAddModal">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="savePayItem">保存</button>
+    </view>
+  </view>
+</view>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-back" bindtap="goBack">
+    <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+  </view>
+</view>
+<!-- 占位 view -->
+<view style="height: 80px;"></view>
+
+<!-- index.wxml -->
+<view class="page-wrapper">
+  <!-- 活动详情卡片 -->
+  <view class="card activity-card" wx:if="{{yard}}">
+    <view class="card-header">
+      <text class="activity-label">{{yard.type }}</text>
+    </view>
+
+    <view class="info-row">
+      <text class="label">活动</text>
+      <text class="value">{{yard.activity}}</text>
+    </view>
+
+    <view class="info-row">
+      <text class="label">位置坐标</text>
+      <text class="value">{{yard.position}}</text>
+    </view>
+
+    <view class="info-row">
+      <text class="label">活动人数</text>
+      <text class="value highlight">{{yard.value}}</text>
+    </view>
+  </view>
+
+  <!-- 消费项目列表 -->
+  <view class="card pays-card" wx:if="{{yard && yard.pays && yard.pays.length > 0}}">
+    <view class="card-header">
+      <text class="title">💰 消费项目</text>
+      <text class="count-badge">共 {{yard.pays.length}} 项</text>
+    </view>
+
+    <view class="pays-list">
+      <view class="pay-item" wx:for="{{yard.pays}}" wx:key="id" bindlongpress="onLongPressPayItem" data-pays_uuid="{{item.paysUuid}}">
+        <view class="pay-info">
+          <text class="pay-project">{{item.payProject}}</text>
+        </view>
+        <view class="pay-amount">
+          <text class="money-symbol">¥</text>
+          <text class="money-number">{{item.money}}</text>
+          <text class="money-unit">元</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 添加消费项目按钮 -->
+    <view class="add-pay-btn" bindtap="showAddModal">
+      <text class="add-icon">+</text>
+      <text class="add-text">添加消费项目</text>
+    </view>
+  </view>
+
+  <!-- 当消费项目列表为空时也显示添加按钮 -->
+  <view class="card pays-card" wx:if="{{yard && (!yard.pays || yard.pays.length === 0)}}">
+    <view class="card-header">
+      <text class="title">💰 消费项目</text>
+      <text class="count-badge">暂无项目</text>
+    </view>
+    <view class="empty-pays-tip">
+      <text>还没有消费项目，点击下方按钮添加</text>
+    </view>
+    <view class="add-pay-btn" bindtap="showAddModal">
+      <text class="add-icon">+</text>
+      <text class="add-text">添加消费项目</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-tip" wx:if="{{loadingVisible}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view class="empty-tip" wx:if="{{!loadingVisible && !yard}}">
+    <text>暂无数据</text>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!-- 遮罩层 -->
+<view class="mask" wx:if="{{visible}}" bindtap="onClose"></view>
+
+<!-- 弹窗内容 -->
+<view class="tip-popup" wx:if="{{visible}}">
+  <view class="popup-content">
+    <!-- 标题 -->
+    <text class="title">{{title || '登录提示'}}</text>
+  
+    <!-- 描述文案 -->
+    <text class="desc">{{desc || '登录后即可享受更多精彩功能'}}</text>
+    
+    <!-- 按钮区域 -->
+    <view class="btn-group">
+      <button class="btn-cancel" bindtap="onCancel">{{cancelText || '暂不登录'}}</button>
+      <button class="btn-confirm" type="primary" bindtap="onConfirm">{{confirmText || '去登录'}}</button>
+    </view>
+  </view>
+</view>

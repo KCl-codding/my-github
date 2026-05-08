@@ -1,0 +1,230 @@
+/* 自定义导航栏 */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #cbedfa;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #333;
+  line-height: 44px;
+}
+
+
+
+/* 公用卡片样式 */
+.info-card {
+  /*background-color: #fff0f2;*/
+  margin: 24rpx 24rpx 0 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+/* ========= 第一块：头像 + 昵称 同行 ========= */
+.row-avatar-nickname {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+}
+
+.avatar-area {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: block;
+}
+
+.nickname-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 32rpx;
+  gap: 16rpx;
+}
+
+.nickname-text {
+  font-size: 34rpx;
+  color: #222222;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* 公共右箭头 */
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999999'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: contain;
+  opacity: 0.7;
+}
+
+/* ========= 第二块：性别和地区 分成两行 ========= */
+.row-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+}
+
+/* 最后一行不要边框 */
+.row-detail:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 34rpx;
+  color: #000000;
+  font-weight: 400;
+}
+
+.detail-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.detail-value {
+  font-size: 34rpx;
+  color: #888888;
+}
+
+/* 退出登录按钮 */
+.logout-wrapper {
+  margin-top: 80rpx;
+  padding: 0 24rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #e9f6fc, #cbedfa);
+  border-radius: 40rpx;
+  border: 1rpx solid #efefef;
+  font-size: 34rpx;
+  color: #ffffff;
+  line-height: 88rpx;
+  height: 88rpx;
+  text-align: center;
+  font-weight: 500;
+}
+
+.logout-btn::after {
+  border: none;
+}
+
+.user-info-row {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  border-radius: 24rpx;
+}
+
+.avatar-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10%;
+  background-color: #f0f0f0;
+  flex-shrink: 0;
+  margin-right: 24rpx;
+}
+
+.nickname {
+  flex: 1;
+  font-size: 34rpx;
+  color: #222222;
+  font-weight: 500;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999999'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: contain;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.nickname {
+  flex: 1;
+  font-size: 34rpx;
+  color: #222222;
+  font-weight: 500;
+  position: relative;
+  top: -30rpx;  /* 向上移动10rpx */
+}
+
+
+/* 未登录状态样式 - 浅粉配色，内容非常靠上 */
+.unlogin-wrapper {
+  display: flex;
+  align-items: flex-start; /* 从顶部开始 */
+  justify-content: center;
+  min-height: auto; /* 不限制最小高度 */
+  padding-top: 60rpx; /* 很小的值，让内容紧贴顶部 */
+  box-sizing: border-box;
+}
+
+.unlogin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.unlogin-icon {
+  width: 140rpx; /* 稍微缩小图标 */
+  height: 140rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+
+.unlogin-title {
+  font-size: 36rpx;
+  color: #134ebb;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+  letter-spacing: 2rpx;
+}
+
+.unlogin-desc {
+  font-size: 26rpx;
+  color: #809dff;
+  margin-bottom: 50rpx;
+}
+
+.unlogin-btn {
+  width: 320rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  background: linear-gradient(135deg, #e9f6fc, #cbedfa);
+  color: white;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 8rpx 20rpx rgba(124, 162, 232, 0.3);
+}
+
+.unlogin-btn::after {
+  border: none;
+}
+
+.unlogin-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}

@@ -1,0 +1,324 @@
+/* pages/uploadForm/uploadForm.wxss */
+
+/* 页面基础设置 */
+page {
+  height: 100vh;
+  background: #e9f6fc;
+}
+
+/* 页面容器 - Flex布局 */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: #e9f6fc;
+}
+
+/* 导航栏 - 固定在最顶部 */
+.custom-nav {
+  position: relative;
+  width: 100%;
+  background-color: #cbedfa;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+  height: 65px;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.nav-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* 滚动区域 - 自动占据剩余空间 */
+.upload-form-container {
+  flex: 1;
+  background: #e9f6fc;
+  padding: 20rpx 30rpx 40rpx;
+  box-sizing: border-box;
+  height: auto;
+}
+
+/* 表单项样式 - 白色背景更好看 */
+.form-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.label {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 输入框样式 */
+.input-field {
+  background: #f8f8f8;
+  padding: 24rpx 20rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 32rpx;
+}
+
+.picker-value {
+  background: #f8f8f8;
+  padding: 24rpx 20rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #666;
+  height: 80rpx;
+  line-height: 32rpx;
+  box-sizing: border-box;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+/* 支付项目样式 */
+.pay-item {
+  margin-top: 20rpx;
+}
+
+.pay-input-group {
+  display: flex;
+  gap: 15rpx;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pay-input {
+  flex: 2;
+  background: #f8f8f8;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  min-width: 200rpx;
+  height: 70rpx;
+  line-height: 30rpx;
+  box-sizing: border-box;
+}
+
+.money-input {
+  flex: 1;
+}
+
+.delete-btn {
+  width: auto;
+  padding: 0 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  background: #ff4d4f;
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 添加支付项目按钮 - 浅蓝色调 */
+.add-pay-item {
+  margin-top: 20rpx;
+  border: 2rpx dashed #a8d8f0;
+  border-radius: 12rpx;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx 20rpx;
+  transition: all 0.3s ease;
+}
+
+.add-pay-item:active {
+  background: rgba(168, 216, 240, 0.2);
+  border-color: #7ec8e0;
+}
+
+.add-pay-icon {
+  font-size: 40rpx;
+  color: #7ec8e0;
+  margin-right: 12rpx;
+  font-weight: 500;
+}
+
+.add-pay-text {
+  font-size: 28rpx;
+  color: #7ec8e0;
+}
+
+/* 图片列表样式 - 固定高度200rpx，一行三个 */
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.image-item {
+  position: relative;
+  width: calc((100% - 24rpx) / 3);
+  height: 200rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4rpx;
+  text-align: center;
+}
+
+.upload-status {
+  font-size: 18rpx;
+  color: #fff;
+}
+
+.upload-status.success {
+  color: #7ec8e0;
+}
+
+.upload-status.error {
+  color: #ff4d4f;
+}
+
+.image-remove {
+  position: absolute;
+  top: 4rpx;
+  right: 4rpx;
+  width: 36rpx;
+  height: 36rpx;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 32rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.add-image-btn {
+  width: calc((100% - 24rpx) / 3);
+  height: 200rpx;
+  border: 2rpx dashed #a8d8f0;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+}
+
+.add-icon {
+  font-size: 48rpx;
+  color: #7ec8e0;
+  line-height: 1;
+}
+
+.add-text {
+  font-size: 22rpx;
+  color: #7ec8e0;
+  margin-top: 6rpx;
+}
+
+/* 提交按钮样式 - 浅蓝色调 */
+.submit-btn-wrapper {
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  padding-bottom: 20rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #7ec8e0;
+  color: #fff;
+  border-radius: 50rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn[disabled] {
+  background: #a8d8f0;
+  color: #e0e0e0;
+}
+
+.uploading-tip {
+  text-align: center;
+  margin-top: 20rpx;
+  color: #7ec8e0;
+  font-size: 24rpx;
+}
+
+/* 修改滚动区域高度 - 关键修改 */
+.upload-form-container {
+  height: calc(100vh - 65px);
+  background: #e9f6fc;
+  padding: 20rpx 30rpx 40rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,120 @@
+/* 导航栏 - 固定在最顶部 */
+.custom-nav {
+  position: relative;
+  width: 100%;
+  background-color: #ffedea;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.nav-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.edit-area {
+  padding: 40rpx 30rpx;
+}
+
+.edit-item {
+  margin-bottom: 60rpx;
+}
+
+/* 输入框 - 增加高度 */
+.input-field {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+/* 选择器 - 降低高度 */
+.picker-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.picker-display text {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.picker-display .selected {
+  color: #333;
+}
+
+.picker-display .placeholder {
+  color: #999;
+}
+
+.arrow {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 保存按钮 */
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #07c160;
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  padding: 0;
+  margin-top: 80rpx;
+}
+
+.save-btn::after {
+  border: none;
+}
+

@@ -1,0 +1,68 @@
+{
+  "pages": [
+    "pages/yard/yard",
+    "pages/message/message",
+    "pages/pay/pay",
+    "pages/person/person",
+    "pages/detail/detail",
+    "pages/chat-ui/chat-ui",
+    "pages/edit/edit",
+    "pages/add/add",
+
+    "components/loading/loading",
+    "components/login-tip-popup/login-tip-popup"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#13227a",
+    "backgroundColor": "#cbedfa",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/yard/yard",
+        "text": "我的会所",
+        "iconPath": "/resources/icon/yard.png",
+        "selectedIconPath": "/resources/icon/yard-activity.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息中心",
+        "iconPath": "/resources/icon/message.png",
+        "selectedIconPath": "/resources/icon/message-activity.png"
+      },
+      {
+        "pagePath": "pages/pay/pay",
+        "text": "充值",
+        "iconPath": "/resources/icon/pay.png",
+        "selectedIconPath": "/resources/icon/pay-activity.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "个人信息",
+        "iconPath": "/resources/icon/person.png",
+        "selectedIconPath": "/resources/icon/person-activity.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#a8e6ff",
+    "navigationBarBackgroundColor": "#a8e6ff"
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

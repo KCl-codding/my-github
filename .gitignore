@@ -1,0 +1,43 @@
+# ========================
+# IDE/系统文件
+# ========================
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+logs/
+
+# ========================
+# Spring Boot 后端（递归忽略）
+# ========================
+**/target/
+**/*.class
+**/.mvn/
+**/mvnw
+**/mvnw.cmd
+
+# 配置文件（含密码，不上传）
+**/application*.yml
+**/application*.yaml
+**/application*.properties
+
+# 保留模板文件
+!**/application-template.yml
+!**/application-template.yaml
+!**/application-template.properties
+
+# ========================
+# 微信小程序
+# ========================
+**/project.private.config.json
+**/node_modules/
+
+# ========================
+# 临时文件
+# ========================
+*.tmp
+*.swp
+*.bak
+*~

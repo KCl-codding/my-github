@@ -1,0 +1,75 @@
+/* 遮罩层 */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.loading-mask-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* loading容器 */
+.loading-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.loading-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  min-width: 200rpx;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+/* GIF图片样式 */
+.loading-gif {
+  display: block;
+}
+
+/* 文字样式 */
+.loading-text {
+  color: #a8e6ff; /* 奶蓝色 - 淡蓝带奶白感 */
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

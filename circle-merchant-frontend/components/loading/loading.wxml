@@ -1,0 +1,28 @@
+<!-- 遮罩层 -->
+<view class="loading-mask {{visible ? 'loading-mask-show' : ''}}" 
+      wx:if="{{mask || fullscreen}}"
+      style="background-color: {{backgroundColor}}"
+      bindtap="onMaskTap">
+</view>
+
+<!-- loading内容 -->
+<view class="loading-container {{visible ? 'loading-show' : ''}} {{fullscreen ? 'loading-fullscreen' : ''}}">
+  <view class="loading-content" 
+        style="{{fullscreen ? 'background-color: transparent;' : ''}} ">
+    
+    <!-- GIF图片 -->
+    <image class="loading-gif"
+           style="width: {{size}}rpx; height: {{size}}rpx;"
+           src="{{gifSrc}}"
+           mode="aspectFit">
+    </image>
+    
+    <!-- 提示文字 -->
+    <view class="loading-text" 
+          wx:if="{{text}}" 
+          style="color: {{fullscreen ? '#666' : '#fff'}}; margin-top: {{size/4}}rpx;">
+      {{text}}
+    </view>
+    
+  </view>
+</view>
