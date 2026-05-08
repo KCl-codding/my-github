@@ -1,0 +1,75 @@
+<!-- components/group-avatar/group-avatar.wxml -->
+<!-- 外层固定 104rpx × 104rpx -->
+<view class="group-avatar-container" style="border-radius: {{borderRadius}}rpx;">
+  <!-- 1人：居中显示 -->
+  <block wx:if="{{displayAvatars.length === 1}}">
+    <view class="grid-1-wrapper">
+      <view class="grid-1">
+        <image class="avatar-small" src="{{displayAvatars[0] || defaultAvatar}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+
+  <!-- 2人：居中显示 -->
+  <block wx:elif="{{displayAvatars.length === 2}}">
+    <view class="grid-2-wrapper">
+      <view class="grid-2">
+        <image class="avatar-small" src="{{displayAvatars[0] || defaultAvatar}}" mode="aspectFill"></image>
+        <image class="avatar-small" src="{{displayAvatars[1] || defaultAvatar}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+
+  <!-- 3人：居中显示 -->
+  <block wx:elif="{{displayAvatars.length === 3}}">
+    <view class="grid-3-wrapper">
+      <view class="grid-3">
+        <image class="avatar-small" src="{{displayAvatars[0] || defaultAvatar}}" mode="aspectFill"></image>
+        <view class="grid-3-right">
+          <image class="avatar-small" src="{{displayAvatars[1] || defaultAvatar}}" mode="aspectFill"></image>
+          <image class="avatar-small" src="{{displayAvatars[2] || defaultAvatar}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 4人：居中显示 -->
+  <block wx:elif="{{displayAvatars.length === 4}}">
+    <view class="grid-4-wrapper">
+      <view class="grid-4">
+        <image class="avatar-small" wx:for="{{displayAvatars}}" wx:key="index" src="{{item || defaultAvatar}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </block>
+
+  <!-- 5-6人：居中显示，使用3x3网格但只填充前6个 -->
+  <block wx:elif="{{displayAvatars.length === 5 || displayAvatars.length === 6}}">
+    <view class="grid-5-6-wrapper">
+      <view class="grid-9">
+        <image class="avatar-small" wx:for="{{displayAvatars}}" wx:key="index" src="{{item || defaultAvatar}}" mode="aspectFill"></image>
+        <!-- 补全空白位置到6个（可选，不显示空白） -->
+      </view>
+    </view>
+  </block>
+
+  <!-- 7-9人：占满3x3网格 -->
+  <block wx:elif="{{displayAvatars.length >= 7 && displayAvatars.length <= 9}}">
+    <view class="grid-9">
+      <image class="avatar-small" wx:for="{{displayAvatars}}" wx:key="index" src="{{item || defaultAvatar}}" mode="aspectFill"></image>
+      <!-- 补全空白位置 -->
+      <view wx:for="{{9 - displayAvatars.length}}" wx:key="index" class="avatar-small avatar-placeholder"></view>
+    </view>
+  </block>
+
+  <!-- 超过9人：显示+ N -->
+  <block wx:else>
+    <view class="grid-9">
+      <image class="avatar-small" wx:for="{{displayAvatars}}" wx:key="index" src="{{item || defaultAvatar}}" mode="aspectFill"></image>
+      <view wx:for="{{9 - displayAvatars.length}}" wx:key="index" class="avatar-small avatar-placeholder"></view>
+      <view class="avatar-more">
+        <image class="avatar-small-bg" src="{{displayAvatars[8] || defaultAvatar}}" mode="aspectFill"></image>
+        <view class="more-mask">+{{totalCount - 8}}</view>
+      </view>
+    </view>
+  </block>
+</view>

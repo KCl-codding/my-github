@@ -1,0 +1,404 @@
+/* 导航栏 - 固定在最顶部 */
+.custom-nav {
+  position: relative;
+  width: 100%;
+  background-color: #c0e7ff;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+  height: 80px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.nav-back {
+  position: absolute;
+  left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  z-index: 10;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.nav-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  flex: 1;
+  margin: 0 80rpx;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c5a7a;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* pages/activity-detail/activity-detail.wxss */
+.detail-page {
+  width: 100%;
+  height: 100vh;
+  background: #e6f4ff;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* 滚动区域 */
+.detail-scroll {
+  flex: 1;
+  padding: 20rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 活动头部 */
+.detail-header {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(96, 165, 250, 0.08);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.publisher-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.publisher-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20%;
+  border: 2rpx solid #c0e7ff;
+  flex-shrink: 0;
+  background-color: #dceefb;
+}
+
+.publisher-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  min-width: 0;
+}
+
+.publisher-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c5a7a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.publish-time {
+  font-size: 24rpx;
+  color: #7aa9c4;
+}
+
+.activity-type {
+  padding: 8rpx 20rpx;
+  background: #dceefb;
+  color: #5b8eb3;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* 卡片样式 */
+.detail-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(96, 165, 250, 0.08);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c5a7a;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #dceefb;
+}
+
+.card-item {
+  margin-bottom: 28rpx;
+}
+
+.card-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-label {
+  font-size: 28rpx;
+  color: #7aa9c4;
+  margin-bottom: 12rpx;
+}
+
+/* 参与人数行 - 修复手机上一字一行的问题 */
+.item-content {
+  font-size: 32rpx;
+  color: #2c5a7a;
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4rpx;
+}
+
+.current-count {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #7fc9ff;
+  white-space: nowrap;
+}
+
+.total-count {
+  font-size: 32rpx;
+  color: #7aa9c4;
+  white-space: nowrap;
+}
+
+.unit {
+  font-size: 28rpx;
+  color: #7aa9c4;
+  margin-left: 4rpx;
+  white-space: nowrap;
+}
+
+/* 分隔符样式 */
+.separator {
+  font-size: 32rpx;
+  color: #7aa9c4;
+  margin: 0 4rpx;
+  white-space: nowrap;
+}
+
+/* 进度条 */
+.progress-bar {
+  width: 100%;
+  height: 12rpx;
+  background: #dceefb;
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-top: 16rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #7fc9ff;
+  border-radius: 6rpx;
+  transition: width 0.3s ease;
+}
+
+/* 费用明细 */
+.pay-list {
+  margin-top: 8rpx;
+}
+
+.pay-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #dceefb;
+}
+
+.pay-name {
+  font-size: 28rpx;
+  color: #4a6f8f;
+  flex: 1;
+  margin-right: 20rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.pay-money {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #ff8a6c;
+  flex-shrink: 0;
+}
+
+.pay-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0 8rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2c5a7a;
+}
+
+.total-money {
+  font-size: 36rpx;
+  color: #ff8a6c;
+}
+
+/* 活动图片网格 - 一行3个自动换行 */
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.image-grid .image-item {
+  width: calc((100% - 32rpx) / 3);
+  aspect-ratio: 1;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background-color: #dceefb;
+  position: relative;
+}
+
+.image-grid .image-item image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 参与者头像区域 */
+.participant-avatars {
+  width: 100%;
+  white-space: nowrap;
+  padding: 10rpx 0;
+}
+
+.avatar-item {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.participant-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20%;
+  background-color: #dceefb;
+  border: 2rpx solid #c0e7ff;
+}
+
+/* 底部占位 */
+.bottom-placeholder {
+  height: 140rpx;
+}
+
+/* 底部按钮 */
+.bottom-btn-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx 40rpx;
+  background: #ffffff;
+  box-shadow: 0 -4rpx 20rpx rgba(96, 165, 250, 0.08);
+  z-index: 99;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.action-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+/* 加入按钮改为蓝色渐变 */
+.join-btn {
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);
+  color: #ffffff;
+}
+
+/* 取消按钮改为深蓝灰色 */
+.cancel-btn {
+  background: #2c5a7a;
+  color: #ffffff;
+}
+
+.btn-hover {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* 参与者区域 */
+.participants-section {
+  margin-bottom: 24rpx;
+}
+
+/* 头像换行布局 */
+.participant-avatars-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 16rpx;
+}
+
+.avatar-item {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.participant-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20%;
+  background-color: #dceefb;
+  border: 2rpx solid #c0e7ff;
+}
+
+/* 进度条容器 */
+.progress-bar-wrapper {
+  margin-top: 8rpx;
+}
+
+/* 进度条 */
+.progress-bar {
+  width: 100%;
+  height: 12rpx;
+  background: #dceefb;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #7fc9ff;
+  border-radius: 6rpx;
+  transition: width 0.3s ease;
+}

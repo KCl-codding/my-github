@@ -1,0 +1,80 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup visible="{{showLoginTip}}" title="发布" desc="发布到广场，召集成员叭~" cancelText="暂不发布" confirmText="立即发布" bind:close="onTipClose" bind:confirm="goto" bind:cancel="onTipCancel" />
+
+<!-- 固定导航栏 -->
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-back" bindtap="goBack">
+    <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+  </view>
+  <view class="nav-title-wrapper">
+    <view class="nav-title">{{activity_message.type}}</view>
+  </view>
+</view>
+
+<!-- 活动详情内容区 -->
+<view class="activity-detail-container">
+  <!-- 活动标题 -->
+  <view class="activity-title">{{activity_message.activity}}</view>
+  
+  <!-- 活动类型和位置 -->
+  <view class="activity-info-row">
+    <text class="info-label">类型：</text>
+    <text class="info-value">{{activity_message.type}}</text>
+  </view>
+  <view class="activity-info-row">
+    <text class="info-label">位置：</text>
+    <text class="info-value">{{activity_message.position}}</text>
+  </view>
+  
+  <!-- 人数修改区域 -->
+  <view class="activity-info-row">
+    <text class="info-label">人数：</text>
+    <view class="people-count-wrapper">
+      <view class="count-control {{currentPeopleCount <= 1 ? 'disabled' : ''}}" bindtap="decreasePeople">
+        <text class="control-icon">-</text>
+      </view>
+      <input 
+        class="count-input" 
+        type="number" 
+        value="{{currentPeopleCount}}" 
+        bindinput="onPeopleInput"
+        bindblur="validatePeopleCount"
+      />
+      <view class="count-control {{currentPeopleCount >= maxPeopleCount ? 'disabled' : ''}}" bindtap="increasePeople">
+        <text class="control-icon">+</text>
+      </view>
+      <text class="max-tip">/ {{maxPeopleCount}}人</text>
+    </view>
+  </view>
+  
+  <!-- 费用列表 -->
+  <view class="activity-pays-section">
+    <view class="section-title">费用明细</view>
+    <view wx:for="{{activity_message.pays}}" wx:key="id" class="pay-item">
+      <text class="pay-project">{{item.payProject}}</text>
+      <text class="pay-money">¥{{item.money}}</text>
+    </view>
+  </view>
+  
+  <!-- 图片展示 -->
+  <view class="activity-images-section">
+    <view class="section-title">活动图片</view>
+    <view class="images-grid">
+      <view wx:for="{{activity_message.urls}}" wx:key="id" class="image-item">
+        <image class="grid-image" src="{{item.url}}" mode="aspectFill" bindtap="previewImage" data-url="{{item.url}}" data-urls="{{activity_message.urls}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-buttons">
+  <button class="btn-contact" bindtap="onContactMerchant">
+    联系商家
+  </button>
+  <button class="btn-publish" bindtap="showLoginTip">
+    发布到广场
+  </button>
+</view>

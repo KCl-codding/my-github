@@ -1,0 +1,388 @@
+/* 页面容器 - 占满全屏，flex 布局 */
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #e6f4ff;  /* 新增：全局背景色 */
+}
+
+/* 导航栏 - 固定在最顶部 */
+.custom-nav {
+  position: relative;
+  width: 100%;
+  background-color: #c0e7ff;  /* 修改：导航栏颜色 */
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.nav-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* 聊天滚动区域 - 自动填充剩余空间 */
+.chat-scroll-view {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* 聊天内容容器 - 关键：底部留出输入框空间，防止被遮挡 */
+.chat-content {
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(120rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 消息项 - 完善样式 */
+.message-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24rpx;
+  width: 100%;
+  position: relative;
+}
+
+.message-right {
+  justify-content: flex-end;
+}
+
+.message-left {
+  justify-content: flex-start;
+}
+
+/* 头像样式 */
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10%;
+  flex-shrink: 0;
+  background-color: #dceefb;  /* 修改：淡蓝色背景 */
+  overflow: hidden;
+}
+
+.avatar-left {
+  margin-right: 16rpx;
+}
+
+.avatar-right {
+  margin-left: 16rpx;
+  order: 2;
+}
+
+/* 气泡样式 */
+.bubble {
+  max-width: 70%;
+  padding: 20rpx 28rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  line-height: 1.4;
+  word-wrap: break-word;
+  position: relative;
+}
+
+/* 修改：我的消息气泡（右侧）- 改为蓝色渐变 */
+.bubble-right {
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);
+  color: #ffffff;
+  border-bottom-right-radius: 8rpx;
+  order: 1;
+}
+
+/* 修改：对方消息气泡（左侧）- 文字颜色改为柔和蓝灰色 */
+.bubble-left {
+  background-color: #ffffff;
+  color: #4a6f8f;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  order: 1;
+}
+
+/* 修改：消息时间颜色 */
+.message-time {
+  font-size: 22rpx;
+  color: #7aa9c4;  /* 修改：柔和的灰蓝色 */
+  margin-top: 8rpx;
+  position: absolute;
+  bottom: -32rpx;
+  white-space: nowrap;
+}
+
+.message-right .message-time {
+  right: 96rpx;
+}
+
+.message-left .message-time {
+  left: 96rpx;
+}
+
+/* 底部输入框 - 相对定位在 flex 容器底部 */
+.input-bar-wrapper {
+  position: relative;
+  width: 100%;
+  border-top: 1rpx solid #eaeaea;
+  z-index: 100;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.02);
+  flex-shrink: 0;
+  background-color: #e6f4ff;  /* 新增：背景色与页面一致 */
+}
+
+/* 输入框主体布局 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  gap: 16rpx;
+}
+
+/* 左侧按钮 */
+.input-left-btn {
+  flex-shrink: 0;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.left-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+/* 中间输入框容器 */
+.input-middle {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 40rpx;
+  border: 1rpx solid #e0e0e0;
+  overflow: hidden;
+}
+
+/* 去掉聚焦时的颜色变化 */
+.input-middle:focus-within {
+  border-color: #e0e0e0;
+  box-shadow: none;
+}
+
+/* 输入框 */
+.chat-input {
+  width: 100%;
+  height: 76rpx;
+  padding: 0 28rpx;
+  font-size: 30rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.input-placeholder {
+  color: #b0b0b0;
+  font-size: 30rpx;
+}
+
+/* 发送按钮 - 只改颜色 */
+.input-right-btn {
+  flex-shrink: 0;
+  padding: 0 32rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.send-disabled {
+  background-color: #e5e5e5;
+  color: #b0b0b0;
+}
+
+/* 修改：发送按钮激活状态 - 改为蓝色渐变 */
+.send-active {
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);
+  color: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(127, 201, 255, 0.3);
+}
+
+/* 安全区域适配 */
+@supports (bottom: constant(safe-area-inset-bottom)) {
+  .input-bar-wrapper {
+    padding-bottom: calc(16rpx + constant(safe-area-inset-bottom));
+  }
+}
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .input-bar-wrapper {
+    padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  }
+}
+
+/* 自定义长按菜单 - 横向 */
+.message-menu {
+  position: fixed;
+  background-color: #3c3c3c;
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  z-index: 1000;
+  transform: scale(0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.message-menu.menu-show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: row;
+  background-color: #3c3c3c;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.menu-item {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #ffffff;
+  white-space: nowrap;
+  position: relative;
+  background-color: #3c3c3c;
+  transition: background-color 0.2s;
+}
+
+/* 删除按钮特殊颜色 */
+.menu-delete {
+  color: #ff3b30;
+}
+
+/* 添加按压效果 */
+.menu-item:active {
+  background-color: #4a4a4a;
+}
+
+/* 菜单项之间的分隔线（除了最后一个） */
+.menu-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5px;
+  height: 16px;
+  background-color: #5a5a5a;
+}
+
+/* 小三角箭头 */
+.menu-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* 系统消息样式（居中灰色提示） */
+.message-system {
+  display: flex;
+  justify-content: center;
+  margin: 16rpx 0;
+}
+
+.system-tip {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #8e8e93;
+  font-size: 24rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 32rpx;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 菜单在气泡下方时，箭头指向上方 */
+.message-menu.menu-bottom .menu-arrow {
+  top: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #3c3c3c;
+}
+
+/* 菜单在气泡上方时，箭头指向下方 */
+.message-menu.menu-top .menu-arrow {
+  bottom: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #3c3c3c;
+}
+
+/* 时间标签样式 */
+.message-time-tip {
+  display: flex;
+  justify-content: center;
+  margin: 20rpx 0;
+  width: 100%;
+}
+
+.time-tip-text {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #8e8e93;
+  font-size: 22rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 1.4;
+}

@@ -1,0 +1,93 @@
+<!-- pages/activity/activity.wxml -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<login-tip-popup 
+  visible="{{showLoginTip}}"
+  title="登录提示"
+  desc="登录后即可享用全部内容"
+  cancelText="暂不登录"
+  confirmText="立即登录"
+  bind:close="onTipClose"
+  bind:confirm="onGoLogin"
+  bind:cancel="onTipCancel"
+/>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-title">缘-圈 | 活动</view>
+</view>
+
+<view style="height: 80px;"></view>
+
+<view class="activity-page">
+  <!-- 类型筛选栏 - 移到 scroll-view 外面 -->
+  <scroll-view class="type-tabs" scroll-x enhanced show-scrollbar="{{false}}" enable-flex>
+    <view class="type-tabs-wrapper">
+      <view 
+        class="type-tab {{currentType === item ? 'active' : ''}}" 
+        wx:for="{{type_list}}" 
+        wx:key="index"
+        bindtap="onTypeChange"
+        data-type="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 瀑布流容器 -->
+  <scroll-view 
+    class="waterfall-container"
+    scroll-y 
+    enhanced 
+    show-scrollbar="{{false}}"
+    bindscrolltolower="onLoadMore"
+  >
+    <view class="waterfall-grid">
+      <!-- 左列 -->
+      <view class="waterfall-column">
+        <view class="activity-card" wx:for="{{leftList}}" wx:key="id" wx:for-item="item" data-yard="{{item}}" bindtap="goto">
+          <view class="people-tag" wx:if="{{item.value}}">
+            <text class="people-number">{{item.value}}人</text>
+          </view>
+          <view class="card-image">
+            <image 
+              src="{{item.urls && item.urls[0] && item.urls[0].url ? item.urls[0].url : '../../resources/404.png'}}" 
+              mode="widthFix"
+              lazy-load="{{true}}"
+            ></image>
+          </view>
+          <view class="card-info">
+            <text class="activity-name">{{item.activity || '活动名称'}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 右列 -->
+      <view class="waterfall-column">
+        <view class="activity-card" wx:for="{{rightList}}" wx:key="id" wx:for-item="item" data-yard="{{item}}" bindtap="goto">
+          <view class="people-tag" wx:if="{{item.value}}">
+            <text class="people-number">{{item.value}}人</text>
+          </view>
+          <view class="card-image">
+            <image 
+              src="{{item.urls && item.urls[0] && item.urls[0].url ? item.urls[0].url : '../../resources/404.png'}}" 
+              mode="widthFix"
+              lazy-load="{{true}}"
+            ></image>
+          </view>
+          <view class="card-info">
+            <text class="activity-name">{{item.activity || '活动名称'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+     <!-- 占位 view -->
+     <view style="height: 80px;"></view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{activityList.length === 0 && !loading}}">
+      <text>暂无{{currentType}}活动信息</text>
+    </view>
+  </scroll-view>
+</view>

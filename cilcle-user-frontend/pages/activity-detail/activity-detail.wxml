@@ -1,0 +1,116 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 固定导航栏 -->
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-back" bindtap="goBack">
+    <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+  </view>
+  <view class="nav-title-wrapper">
+    <view class="nav-title">{{activity.userInfo.nickname}}</view>
+  </view>
+</view>
+
+<!--pages/activity-detail/activity-detail.wxml-->
+<view class="detail-page">
+  <!-- 滚动内容区 -->
+  <scroll-view class="detail-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 活动头部信息 -->
+    <view class="detail-header">
+      <view class="publisher-info">
+        <image class="publisher-avatar" src="{{activity.userInfo.avatarUrl}}" mode="aspectFill"></image>
+        <view class="publisher-detail">
+          <text class="publisher-name">{{activity.userInfo.nickname}}</text>
+          <text class="publish-time">{{activity.formattedTime || activity.publishTime}}</text>
+        </view>
+        <view class="activity-type">{{activity.type}}</view>
+      </view>
+    </view>
+<!-- 活动内容卡片 -->
+<view class="detail-card">
+  <!-- 活动描述 -->
+  <view class="card-item">
+    <view class="item-label">活动描述</view>
+    <view class="item-content">{{activity.activity}}</view>
+  </view>
+
+  <!-- 活动位置 -->
+  <view class="card-item">
+    <view class="item-label">活动位置</view>
+    <view class="item-content">{{activity.position}}</view>
+  </view>
+
+  <!-- 人数信息 -->
+  <view class="card-item">
+    <view class="item-label">参与人数</view>
+    <view class="item-content">
+      <text class="current-count">{{activity.currentCount}}</text>
+      <text>/</text>
+      <text class="total-count">{{activity.value}}</text>
+      <text class="unit">人</text>
+    </view>
+  </view>
+
+<!-- 参与者头像展示区域 - 使用flex换行布局 -->
+<view class="participants-section" wx:if="{{joinUrlList && joinUrlList.length > 0}}">
+  <view class="card-title">参与者 ({{joinUrlList.length}}人)</view>
+  <view class="participant-avatars-wrap">
+    <view class="avatar-item" wx:for="{{joinUrlList}}" wx:key="index">
+      <image class="participant-avatar" src="{{item}}" mode="aspectFill"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 进度条 -->
+<view class="progress-bar-wrapper">
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{(activity.currentCount/activity.value)*100}}%"></view>
+  </view>
+</view>
+</view>
+
+    <!-- 费用明细卡片 -->
+    <view class="detail-card" wx:if="{{activity.pays && activity.pays.length > 0}}">
+      <view class="card-title">💰 费用明细</view>
+      <view class="pay-list">
+        <view class="pay-item" wx:for="{{activity.pays}}" wx:key="id">
+          <text class="pay-name">{{item.payProject}}</text>
+          <text class="pay-money">¥{{item.money}}</text>
+        </view>
+        <view class="pay-total">
+          <text>合计</text>
+          <text class="total-money">¥{{totalMoney}}</text>
+        </view>
+      </view>
+    </view>
+
+<!-- 活动图片 -->
+<view class="detail-card" wx:if="{{activity.urls && activity.urls.length > 0}}">
+  <view class="card-title">📷 活动图片</view>
+  <view class="image-grid">
+    <view class="image-item" wx:for="{{activity.urls}}" wx:key="index">
+      <image 
+        src="{{item.url}}" 
+        mode="aspectFill" 
+        bindtap="previewImage" 
+        data-url="{{item.url}}"
+        binderror="onImageError">
+      </image>
+    </view>
+  </view>
+</view>
+
+<!-- 占位 view -->
+<view style="height: 80px;"></view>
+
+    <!-- 底部占位 -->
+    <view class="bottom-placeholder"></view>
+  </scroll-view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-btn-wrapper">
+    <button class="action-btn {{isSelf ? 'cancel-btn' : 'join-btn'}}" bindtap="onButtonTap" hover-class="btn-hover">
+      {{buttonText}}
+    </button>
+  </view>
+</view>

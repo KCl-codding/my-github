@@ -1,0 +1,163 @@
+/* pages/message/message.wxss */
+page {
+  height: 100%;
+  background-color: #e6f4ff;  /* 全局背景色 */
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 导航栏样式 */
+.custom-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #c0e7ff;  /* 导航栏颜色 */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2rpx 8rpx rgba(96, 165, 250, 0.1);  /* 淡蓝色阴影 */
+}
+
+.nav-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2c5a7a;  /* 深蓝灰色 */
+  line-height: 44px;
+}
+
+.chat-scroll {
+  flex: 1;
+  height: 0;
+  width: 100%;
+}
+
+/* 聊天列表 */
+.chat-list {
+  background-color: transparent;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid rgba(127, 201, 255, 0.3);  /* 淡蓝色边框 */
+  transition: background-color 0.2s;
+  background-color: transparent;
+  position: relative;
+}
+
+.chat-item:active {
+  background-color: rgba(127, 201, 255, 0.15);  /* 淡蓝色高亮 */
+}
+
+/* 头像容器必须设置相对定位 */
+.avatar-wrapper {
+  position: relative;
+  margin-right: 24rpx;
+  width: 104rpx;
+  height: 104rpx;
+}
+
+.avatar {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 10%;
+  background-color: rgba(127, 201, 255, 0.2);  /* 淡蓝色背景 */
+  display: block;
+  border: 2rpx solid #c0e7ff;  /* 淡蓝色边框 */
+}
+
+/* 角标样式 */
+.badge {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  background: linear-gradient(135deg, #ff8a8a 0%, #ff6b6b 100%);  /* 柔和的红色渐变，保持醒目 */
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8rpx;
+  border: 2rpx solid #ffffff;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.badge-text {
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.chat-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12rpx;
+}
+
+.nickname {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #2c5a7a;  /* 深蓝灰色 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 400rpx;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #7aa9c4;  /* 柔和的灰蓝色 */
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.chat-preview {
+  overflow: hidden;
+}
+
+.last-message {
+  font-size: 28rpx;
+  color: #7aa9c4;  /* 柔和的灰蓝色 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.empty-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+  background-color: transparent;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #7aa9c4;  /* 柔和的灰蓝色 */
+  margin-top: 40rpx;
+}
+
+.empty-tip {
+  font-size: 28rpx;
+  color: #a8c4d8;  /* 更浅的灰蓝色 */
+  margin-top: 16rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "login-tip-popup": "/components/login-tip-popup/login-tip-popup"
+  }
+}

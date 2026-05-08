@@ -1,0 +1,139 @@
+/* 导航栏 - 固定在最顶部 */
+.custom-nav {
+  position: relative;
+  width: 100%;
+  background-color: #c0e7ff;  /* 修改：导航栏颜色 */
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rpx;
+  height: 44px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.nav-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* 页面背景 */
+page {
+  background-color: #e6f4ff;  /* 新增：全局背景色 */
+}
+
+.edit-area {
+  padding: 40rpx 30rpx;
+}
+
+.edit-item {
+  margin-bottom: 60rpx;
+}
+
+/* 输入框 - 增加高度 */
+.input-field {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #c0e7ff;  /* 修改：淡蓝色边框 */
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  color: #2c5a7a;  /* 新增：文字颜色 */
+}
+
+/* 输入框聚焦状态 */
+.input-field:focus {
+  border-color: #7fc9ff;  /* 新增：聚焦时边框加深 */
+}
+
+/* 选择器 - 降低高度 */
+.picker-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #c0e7ff;  /* 修改：淡蓝色边框 */
+  border-radius: 12rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.picker-display text {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.picker-display .selected {
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+}
+
+.picker-display .placeholder {
+  color: #7aa9c4;  /* 修改：柔和的灰蓝色 */
+}
+
+.arrow {
+  color: #7aa9c4;  /* 修改：柔和的灰蓝色 */
+  font-size: 24rpx;
+}
+
+/* 保存按钮 - 改为蓝色渐变 */
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);  /* 修改：蓝色渐变 */
+  color: #ffffff;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  padding: 0;
+  margin-top: 80rpx;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(127, 201, 255, 0.3);  /* 新增：淡蓝色阴影 */
+}
+
+.save-btn::after {
+  border: none;
+}
+
+/* 保存按钮点击效果 */
+.save-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}

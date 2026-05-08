@@ -1,0 +1,237 @@
+/* 自定义导航栏 */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #c0e7ff;  /* 修改：导航栏颜色 */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  line-height: 44px;
+}
+
+/* 页面背景 */
+page {
+  background-color: #e6f4ff;  /* 新增：全局背景色 */
+}
+
+/* 公用卡片样式 */
+.info-card {
+  margin: 24rpx 24rpx 0 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background-color: #ffffff;  /* 新增：卡片白色背景 */
+  box-shadow: 0 2rpx 8rpx rgba(96, 165, 250, 0.08);  /* 新增：淡蓝色阴影 */
+}
+
+/* ========= 第一块：头像 + 昵称 同行 ========= */
+.row-avatar-nickname {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+}
+
+.avatar-area {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #dceefb;  /* 修改：淡蓝色背景 */
+  display: block;
+  border: 2rpx solid #c0e7ff;  /* 新增：淡蓝色边框 */
+}
+
+.nickname-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 32rpx;
+  gap: 16rpx;
+}
+
+.nickname-text {
+  font-size: 34rpx;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  font-weight: 500;
+  text-align: right;
+}
+
+/* 公共右箭头 */
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237aa9c4'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");  /* 修改：箭头颜色改为蓝灰色 */
+  background-size: contain;
+  opacity: 0.7;
+}
+
+/* ========= 第二块：性别和地区 分成两行 ========= */
+.row-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  border-top: 1rpx solid #dceefb;  /* 修改：淡蓝色分割线 */
+}
+
+/* 最后一行不要边框 */
+.row-detail:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 34rpx;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  font-weight: 400;
+}
+
+.detail-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.detail-value {
+  font-size: 34rpx;
+  color: #7aa9c4;  /* 修改：柔和的灰蓝色 */
+}
+
+/* 退出登录按钮 */
+.logout-wrapper {
+  margin-top: 80rpx;
+  padding: 0 24rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);  /* 修改：蓝色渐变 */
+  border-radius: 40rpx;
+  border: none;
+  font-size: 34rpx;
+  color: #ffffff;
+  line-height: 88rpx;
+  height: 88rpx;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(127, 201, 255, 0.3);  /* 新增：淡蓝色阴影 */
+}
+
+.logout-btn::after {
+  border: none;
+}
+
+.user-info-row {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  border-radius: 24rpx;
+}
+
+.avatar-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10%;
+  background-color: #dceefb;  /* 修改：淡蓝色背景 */
+  flex-shrink: 0;
+  margin-right: 24rpx;
+}
+
+.nickname {
+  flex: 1;
+  font-size: 34rpx;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  font-weight: 500;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237aa9c4'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");  /* 修改：箭头颜色改为蓝灰色 */
+  background-size: contain;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.nickname {
+  flex: 1;
+  font-size: 34rpx;
+  color: #2c5a7a;  /* 修改：深蓝灰色 */
+  font-weight: 500;
+  position: relative;
+  top: -30rpx;
+}
+
+/* 未登录状态样式 */
+.unlogin-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: auto;
+  padding-top: 60rpx;
+  box-sizing: border-box;
+  background-color: #e6f4ff;  /* 新增：背景色 */
+}
+
+.unlogin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.unlogin-icon {
+  width: 140rpx;
+  height: 140rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+
+.unlogin-title {
+  font-size: 36rpx;
+  color: #5b8eb3;  /* 修改：柔和蓝灰色 */
+  font-weight: 600;
+  margin-bottom: 16rpx;
+  letter-spacing: 2rpx;
+}
+
+.unlogin-desc {
+  font-size: 26rpx;
+  color: #7aa9c4;  /* 修改：柔和的灰蓝色 */
+  margin-bottom: 50rpx;
+}
+
+.unlogin-btn {
+  width: 320rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);  /* 修改：蓝色渐变 */
+  color: white;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 8rpx 20rpx rgba(127, 201, 255, 0.3);  /* 修改：淡蓝色阴影 */
+}
+
+.unlogin-btn::after {
+  border: none;
+}
+
+.unlogin-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}

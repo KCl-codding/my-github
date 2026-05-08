@@ -1,0 +1,98 @@
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(96, 165, 250, 0.2);  /* 更浅的淡蓝色半透明遮罩 */
+  z-index: 1000;
+}
+
+.tip-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 560rpx;
+  z-index: 1001;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);  /* 白色到淡蓝色渐变背景 */
+  border-radius: 32rpx;
+  padding: 56rpx 40rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 16rpx 32rpx rgba(96, 165, 250, 0.15);  /* 更浅的淡蓝色阴影 */
+}
+
+.icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2c5a7a;  /* 深蓝灰色，与导航标题一致 */
+  margin-bottom: 16rpx;
+}
+
+.desc {
+  display: block;
+  font-size: 28rpx;
+  color: #6ea8d4;  /* 柔和的蓝灰色 */
+  line-height: 1.5;
+  margin-bottom: 48rpx;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.btn-cancel {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #e8f3ff;  /* 淡蓝色背景 */
+  color: #5b8eb3;  /* 柔和蓝灰色文字 */
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.btn-cancel::after {
+  border: none;
+}
+
+.btn-confirm {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);  /* 蓝色渐变，与换一批按钮一致 */
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4rpx 10rpx rgba(127, 201, 255, 0.25);  /* 更浅的按钮阴影 */
+}
+
+.btn-confirm::after {
+  border: none;
+}
+
+/* 可选：为确认按钮添加点击效果 */
+.btn-confirm:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}

@@ -1,0 +1,184 @@
+/* pages/activity/activity.wxss */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #c0e7ff;  /* 导航栏颜色 */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2c5a7a;  /* 深蓝灰色 */
+  line-height: 44px;
+}
+
+.activity-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background-color: #e6f4ff;  /* 全局背景色 */
+}
+
+/* 类型筛选栏 */
+.type-tabs {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 20rpx 0;
+  background-color: #e6f4ff;  /* 柔和的淡蓝色，与背景协调 */
+  z-index: 10;
+  position: relative;
+  height: auto;
+  min-height: 80rpx;
+}
+
+.type-tabs-wrapper {
+  display: inline-flex;
+  padding: 0 20rpx;
+}
+
+.type-tab {
+  display: inline-block;
+  padding: 12rpx 32rpx;
+  margin: 0 12rpx;
+  font-size: 28rpx;
+  color: #5b8eb3;  /* 柔和蓝灰色 */
+  border-radius: 60rpx;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.type-tab.active {
+  background: linear-gradient(135deg, #a8d8ff 0%, #7fc9ff 100%);  /* 蓝色渐变 */
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(127, 201, 255, 0.3);
+}
+
+/* 瀑布流容器 */
+.waterfall-container {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  position: relative;
+}
+
+.waterfall-grid {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx;
+}
+
+.waterfall-column {
+  flex: 1;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 卡片样式 */
+.activity-card {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(96, 165, 250, 0.12);  /* 淡蓝色阴影 */
+  position: relative;
+  transition: transform 0.2s;
+  box-sizing: border-box;
+}
+
+.activity-card:active {
+  transform: scale(0.98);
+}
+
+/* 人数标签 */
+.people-tag {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+  background-color: rgba(44, 90, 122, 0.8);  /* 深蓝灰色半透明 */
+  border-radius: 30rpx;
+  padding: 6rpx 16rpx;
+  z-index: 10;
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.people-number {
+  font-weight: 500;
+}
+
+/* 图片区域 */
+.card-image {
+  width: 100%;
+  max-height: 200px;
+  background-color: #e6f4ff;  /* 全局背景色作为占位 */
+}
+
+.card-image image {
+  width: 100%;
+  background-color: #e6f4ff;
+  display: block;
+}
+
+/* 信息区域 */
+.card-info {
+  padding: 20rpx 16rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  background-color: #ffffff;
+}
+
+.activity-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2c5a7a;  /* 深蓝灰色 */
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.detail-btn::after {
+  border: none;
+}
+
+.empty-state {
+  padding: 60rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7aa9c4;  /* 柔和的灰蓝色 */
+  font-size: 28rpx;
+}
+
+.activity-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2c5a7a;
+  line-height: 1.3;
+  /* 方案二：两行省略（更稳定） */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  /* 关键：添加这些确保生效 */
+  max-height: 78rpx;  /* 行高1.3 * 2行 ≈ 2.6 * 30rpx = 78rpx */
+}

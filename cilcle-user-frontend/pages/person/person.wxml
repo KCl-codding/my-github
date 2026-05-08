@@ -1,0 +1,70 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 动态登录/退出提示弹窗 -->
+<login-tip-popup 
+  visible="{{showLoginTip}}"
+  title="{{popupTitle}}"
+  desc="{{popupDesc}}"
+  cancelText="{{popupCancelText}}"
+  confirmText="{{popupConfirmText}}"
+  bind:close="onTipClose"
+  bind:confirm="onPopupConfirm"
+  bind:cancel="onTipCancel"
+/>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-title">缘-圈 | 个人</view>
+</view>
+
+<!-- 占位 view -->
+<view style="height: 80px;"></view>
+
+<!-- 未登录状态 - 显示在中上部分 -->
+<view class="unlogin-wrapper" wx:if="{{!isLogin}}">
+  <view class="unlogin-container">
+    <text class="unlogin-title">尚未登录</text>
+    <text class="unlogin-desc">登录后即可查看个人资料</text>
+    <button class="unlogin-btn" bindtap="onUnloginTap">立即登录</button>
+  </view>
+</view>
+
+<!-- 已登录状态 -->
+<view class="page" wx:else>
+  <view class="info-card">
+    <view class="user-info-row" bindtap="editNickname">
+      <!-- 左边：头像 -->
+      <image class="avatar-img" src="{{userInfo.avatarUrl}}" mode="aspectFill" catchtap="uploadAvatar"></image>
+
+      <!-- 中间：昵称 -->
+      <text class="nickname">{{userInfo.nickName || '微信用户'}}</text>
+      <!-- 右边：箭头 -->
+      <view class="arrow-icon"></view>
+    </view>
+  </view>
+
+  <!-- 卡片2：性别 + 地区（分两行显示） -->
+  <view class="info-card">
+    <!-- 第一行：性别 -->
+    <view class="row-detail" bindtap="selectGender">
+      <text class="detail-label">性别</text>
+      <view class="detail-right">
+        <text class="detail-value">{{genderText || '未设置'}}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <!-- 第二行：地区 -->
+    <view class="row-detail" bindtap="chooseRegion">
+      <text class="detail-label">地区</text>
+      <view class="detail-right">
+        <text class="detail-value">{{regionText || '未选择'}}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-wrapper">
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+</view>

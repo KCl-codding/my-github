@@ -1,0 +1,101 @@
+<!-- pages/random-consumer/random-consumer.wxml -->
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup 
+  visible="{{showLoginTip}}"
+  title="登录提示"
+  desc="登录后即可享用全部内容"
+  cancelText="暂不登录"
+  confirmText="立即登录"
+  bind:close="onTipClose"
+  bind:confirm="onGoLogin"
+  bind:cancel="onTipCancel"
+/>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-title">缘-圈 | 推荐</view>
+</view>
+
+<!-- 占位 view -->
+<view style="height: 80px;"></view> 
+
+<view class="random-consumer-page">
+  <!-- 已登录时显示推荐用户内容 -->
+  <block wx:if="{{isLogin}}">
+    <view class="top-avatar-section">
+      <view class="avatar-row-wrapper">
+        <view class="avatar-grid">
+          <block wx:for="{{random_consumer}}" wx:key="openid">
+            <view class="avatar-item" catchtap="onAvatarTap" data-openid="{{item.openid}}">
+              <image 
+                class="avatar-img gender-border-{{item.gender == '1' ? 'male' : 'female'}}" 
+                src="{{item.avatarUrl}}" 
+                mode="aspectFill"
+                binderror="onAvatarError"
+                data-index="{{index}}"
+              ></image>
+            </view>
+          </block>
+          
+          <!-- 如果不足5个，显示占位符 -->
+          <block wx:for="{{5 - random_consumer.length}}" wx:key="*this" wx:for-item="placeholder">
+            <view class="avatar-item" style="opacity: 0;">
+              <view class="avatar-placeholder"></view>
+            </view>
+          </block>
+        </view>
+        
+        <!-- 空状态提示 -->
+        <view wx:if="{{random_consumer.length === 0}}" class="empty-tip-full">暂无用户数据</view>
+      </view>
+      
+      <!-- 换一批按钮 -->
+      <view class="refresh-btn-wrapper">
+        <view class="refresh-btn" bindtap="onRefreshTap">
+          <text class="refresh-icon">⟳</text>
+          <text class="refresh-text">换一批</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 活动列表区域 -->
+    <view class="activity-section" wx:if="{{activityList.length > 0}}">
+      <view class="section-title">今日推荐活动</view>
+      <view class="activity-grid">
+        <view class="activity-card" wx:for="{{activityList}}" wx:key="id" bindtap="onActivityTap" data-item="{{item}}">
+          <!-- 封面图容器 -->
+          <view class="activity-cover-wrapper">
+            <!-- 左上角类型标签 -->
+            <view class="activity-type-tag">{{item.type}}</view>
+            
+            <!-- 右上角人数标签 -->
+            <view class="activity-people-tag">
+              <text>{{item.value}}人</text>
+            </view>
+            
+            <!-- 封面图 -->
+            <image 
+              class="activity-cover" 
+              src="{{item.urls[0].url}}" 
+              mode="aspectFill"
+              binderror="onActivityCoverError"
+              data-index="{{index}}"
+            ></image>
+          </view>
+          
+          <!-- 活动描述 -->
+          <view class="activity-desc">{{item.activity}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 未登录时只显示一行文字 -->
+  <block wx:else>
+    <view class="login-guard-text" bindtap="onRefreshTap">
+      <text>登录后查看更多推荐用户</text>
+    </view>
+  </block>
+</view>

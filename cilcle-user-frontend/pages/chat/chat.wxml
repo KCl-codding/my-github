@@ -1,0 +1,68 @@
+<!-- 可点击遮罩关闭 -->
+<loading visible="{{loadingVisible}}" mask="{{true}}" maskClosable="{{true}}" bindclose="onLoadingClose"></loading>
+
+<!-- 登录提示弹窗 -->
+<login-tip-popup 
+  visible="{{showLoginTip}}"
+  title="登录提示"
+  desc="登录后即可享用全部内容"
+  cancelText="暂不登录"
+  confirmText="立即登录"
+  bind:close="onTipClose"
+  bind:confirm="onGoLogin"
+  bind:cancel="onTipCancel"
+/>
+
+<view class="custom-nav" style="padding-top: {{20}}px;">
+  <view class="nav-back" bindtap="goBack">
+    <image class="back-icon" src="/resources/icon/back.png" mode="aspectFit"></image>
+  </view>
+</view>
+
+<!-- 占位 view -->
+<view style="height: 80px;"></view>
+
+<!-- 用户信息部分 -->
+<view wx:if="{{loading}}" class="loading-wrapper">
+  <text class="loading-text">加载中...</text>
+</view>
+
+<!-- 可滚动的内容区域 -->
+<scroll-view wx:else scroll-y="true" style="height: calc(100vh - 80px);">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <!-- 头像和用户信息横向布局 -->
+    <view class="user-info-row">
+      <image class="avatar" src="{{one_consumer.avatarUrl}}" mode="aspectFill"></image>
+      <view class="info-right">
+        <view class="nickname">{{one_consumer.nickname || '微信用户'}}</view>
+        <view class="user-id">ID: {{one_consumer.id || '--'}}</view>
+      </view>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="divider"></view>
+
+    <!-- 详细信息列表 -->
+    <view class="info-list">
+      <view class="info-item">
+        <text class="label">性别</text>
+        <text class="value">
+          <block wx:if="{{one_consumer.gender == 1}}">男</block>
+          <block wx:elif="{{one_consumer.gender == 2}}">女</block>
+          <block wx:else>未设置</block>
+        </text>
+      </view>
+      <view class="info-item">
+        <text class="label">地区</text>
+        <text class="value">{{one_consumer.country || ''}} {{one_consumer.province || ''}} {{one_consumer.city || ''}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发消息按钮（放在卡片外面） -->
+  <button class="message-btn" bindtap="sendMessage">发消息</button>
+  
+  <!-- 底部留白，避免按钮贴底 -->
+  <view style="height: 30px;"></view>
+</scroll-view>

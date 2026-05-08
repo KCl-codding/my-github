@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/recommend/recommend",
+    "pages/yard/yard",
+    "pages/activity/activity",
+    "pages/message/message",
+    "pages/person/person",
+    "pages/chat/chat",
+    "pages/chat-ui/chat-ui",
+    "pages/edit/edit",
+    "pages/activity-ui/activity-ui",
+    "pages/activity-detail/activity-detail",
+    "pages/chat-group/chat-group",
+
+    "components/loading/loading",
+    "components/login-tip-popup/login-tip-popup",
+    "components/group-avatar/group-avatar"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ffbcb0",
+    "backgroundColor": "#c0e7ff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/recommend/recommend",
+        "text": "推荐",
+        "iconPath": "/resources/icon/recommend.png",
+        "selectedIconPath": "/resources/icon/recommend-activity.png"
+      },
+      {
+        "pagePath":"pages/activity/activity",
+        "text": "活动中心",
+        "iconPath": "/resources/icon/activity.png",
+        "selectedIconPath": "/resources/icon/activity-activity.png"
+      },
+      {
+        "pagePath": "pages/yard/yard",
+        "text": "广场",
+        "iconPath": "/resources/icon/yard.png",
+        "selectedIconPath": "/resources/icon/yard-activity.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息中心",
+        "iconPath": "/resources/icon/message.png",
+        "selectedIconPath": "/resources/icon/message-activity.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "个人信息",
+        "iconPath": "/resources/icon/person.png",
+        "selectedIconPath": "/resources/icon/person-activity.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
