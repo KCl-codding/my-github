@@ -1,0 +1,43 @@
+# ========================
+# 通用的IDE/系统忽略
+# ========================
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+logs/
+
+# ========================
+# Spring Boot 后端通用规则（递归忽略）
+# ========================
+**/target/
+**/*.class
+**/.mvn/
+**/mvnw
+**/mvnw.cmd
+
+# 所有配置文件（含密码，不提交）
+**/application*.yml
+**/application*.yaml
+**/application*.properties
+
+# 保留一个示例模板（如果有）
+!**/application-template.yml
+!**/application-template.yaml
+!**/application-template.properties
+
+# ========================
+# 微信小程序通用规则（递归忽略）
+# ========================
+**/project.private.config.json
+**/node_modules/
+
+# ========================
+# 其他通用临时文件
+# ========================
+*.tmp
+*.swp
+*.bak
+*~
